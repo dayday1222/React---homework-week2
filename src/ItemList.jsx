@@ -75,13 +75,13 @@ function ItemList () {
     }else{
       const tempCart = cart.map((cartItem) => {
         return drink.name === cartItem.name
-          ? {
-              ...cartItem,
-              quantity: cartItem.quantity < 10 ? cartItem.quantity + 1 : cartItem.quantity,
-              subtotal: (cartItem.quantity+1) * cartItem.price
-            }
-          : { ...cartItem };
-        });
+        ? {
+          ...cartItem,
+          quantity: cartItem.quantity < 10 ? cartItem.quantity + 1 : cartItem.quantity,
+          subtotal: cartItem.quantity < 10 ? (cartItem.quantity+1) * cartItem.price : cartItem.subtotal
+        }
+        : { ...cartItem };
+      });
       setCart(tempCart);
     }
   }
